@@ -1,3 +1,3 @@
-* text=auto eol=lf # normalize line endings in text files
+* text=auto eol=lf
 
 dist/** -diff linguist-generated=true
