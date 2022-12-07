@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/bfra-me/github-action/actions"><img alt="typescript-action status" src="https://github.com/bfra-me/github-action/workflows/build-test/badge.svg"></a>
+  <a href="https://github.com/bfra-me/github-action/actions"><img alt="typescript-action status" src="https://github.com/bfra-me/github-action/workflows/ci/badge.svg"></a>
 </p>
 
 # Create a JavaScript Action using TypeScript
@@ -24,10 +24,10 @@ Install the dependencies
 npm install
 ```
 
-Build the typescript and package it for distribution
+Transpile TypeScript to JavaScript and package it for distribution:
 
 ```bash
-npm run build && npm run package
+npm run build
 ```
 
 Run the tests :heavy_check_mark:
@@ -80,7 +80,7 @@ Actions are run from GitHub repos so we will check in the packed dist folder.
 Then run [ncc](https://www.npmjs.com/package/@vercel/ncc) and push the results:
 
 ```bash
-npm run package
+npm run build
 git add dist
 git commit -a -m "prod dependencies"
 git push origin releases/v1
