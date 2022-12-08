@@ -1,6 +1,10 @@
 {
+    "env": {
+      "node": true,
+      "es6": true,
+      "jest/globals": true
+    },
     "plugins": ["jest", "@typescript-eslint"],
-    "extends": ["plugin:github/recommended"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
       "ecmaVersion": 9,
@@ -46,10 +50,5 @@
       "@typescript-eslint/semi": ["error", "never"],
       "@typescript-eslint/type-annotation-spacing": "error",
       "@typescript-eslint/unbound-method": "error"
-    },
-    "env": {
-      "node": true,
-      "es6": true,
-      "jest/globals": true
     }
   }
