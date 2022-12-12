@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "private": true,
   "description": "GitHub Action template repository for bfra.me.",
-  "main": "lib/main.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "ncc build --source-map --license licenses.txt",
     "format": "prettier --write '**/*.ts'",
