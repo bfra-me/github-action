@@ -29,7 +29,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
         env:
-          NODE_VERSION: 16.x # renovate: datasource=npm depName=node versioning=node
+          NODE_VERSION: 18.x # renovate: datasource=npm depName=node versioning=node
 
       - name: Install dependencies
         run: npm ci
