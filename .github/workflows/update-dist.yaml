@@ -28,6 +28,7 @@ jobs:
         uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
         with:
           node-version: ${{ env.NODE_VERSION }}
+          cache: yarn
         env:
           NODE_VERSION: 18.x # renovate: datasource=node depName=node
 
