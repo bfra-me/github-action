@@ -17,6 +17,13 @@ name: Renovate
     paths:
       - '.github/workflows/renovate.yaml'
       - '.github/renovate.json'
+  workflow_dispatch:
+    inputs:
+      print_config:
+        description: Log the fully-resolved Renovate config for each repository, plus fully-resolved presets.
+        required: false
+        type: boolean
+        default: false
 
 permissions: {}
 
@@ -26,5 +33,5 @@ jobs:
     with:
       autodiscover: false
       dry_run: ${{ github.event_name == 'pull_request' && true }}
-      print_config: true
+      print_config: ${{ inputs.print_config || false }}
     secrets: inherit
