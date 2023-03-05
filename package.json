@@ -1,5 +1,6 @@
 {
   "name": "github-action",
+  "packageManager": "yarn@3.4.1",
   "version": "0.0.0-development",
   "private": true,
   "description": "GitHub Action template repository for bfra.me.",
@@ -26,6 +27,7 @@
     "@actions/core": "^1.10.0"
   },
   "devDependencies": {
+    "@types/jest": "^29.4.0",
     "@types/node": "^18.11.0",
     "@typescript-eslint/eslint-plugin": "^5.46.0",
     "@typescript-eslint/parser": "^5.46.0",
