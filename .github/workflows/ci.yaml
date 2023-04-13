@@ -22,7 +22,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: yarn
         env:
-          NODE_VERSION: 18.15.0 # renovate: datasource=node depName=node
+          NODE_VERSION: 18.16.0 # renovate: datasource=node depName=node
       - run: yarn install --immutable
       - run: yarn build
       - run: yarn check-format
