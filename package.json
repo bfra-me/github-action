@@ -7,9 +7,9 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "ncc build --license licenses.txt -o dist src/main.ts",
-    "format": "prettier --write '**/*.ts'",
-    "check-format": "prettier --check '**/*.ts'",
-    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "test": "jest"
   },
   "repository": {
