@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
-      - env: 
+      - env:
           NODE_VERSION: 18.17.1 # renovate: datasource=node depName=node
         id: set-node-version
         uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3.8.1
@@ -32,7 +32,7 @@ jobs:
           cache: yarn
           node-version: ${{ env.NODE_VERSION }}
       - id: filter
-        uses: dorny/paths-filter@v2  
+        uses: dorny/paths-filter@v2
         with:
           filters: |
             config: &config
@@ -62,9 +62,10 @@ jobs:
           src-changed: ${{ steps.filter.outputs.src-changed }}
         id: _debug_setup
         run: |
-          echo "dist-changed: $dist-changed\n${{ steps.filter.outputs.dist-changed_files }}"
-          echo "should-lint: $should-lint\n${{ steps.filter.outputs.should-lint_files }}"
-          echo "src-changed: $src-changed\n${{ steps.filter.outputs.src-changed_files }}"
+          # Debug the setup job
+          echo "dist-changed: ${dist-changed}" && echo ${{ steps.filter.outputs.dist-changed_files }}
+          echo "should-lint: ${should-lint}" && echo ${{ steps.filter.outputs.should-lint_files }}
+          echo "src-changed: ${src-changed}" && echo ${{ steps.filter.outputs.src-changed_files }}
 
   lint:
     if: ${{ needs.setup.outputs.should-lint == 'true' }}
