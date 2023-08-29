@@ -63,9 +63,9 @@ jobs:
         id: _debug_setup
         run: |
           # Debug the setup job
-          ${{ env.dist-changed }} && echo "dist-changed: ${{ steps.filter.outputs.dist-changed_files }}"
-          ${{ env.should-lint }} && echo "should-lint: ${{ steps.filter.outputs.should-lint_files }}"
-          ${{ env.src-changed }} && echo "src-changed: ${{ steps.filter.outputs.src-changed_files }}"
+          ${{ env.dist-changed }} && echo "dist-changed: ${{ steps.filter.outputs.dist-changed_files }}" || true
+          ${{ env.should-lint }} && echo "should-lint: ${{ steps.filter.outputs.should-lint_files }}" || true
+          ${{ env.src-changed }} && echo "src-changed: ${{ steps.filter.outputs.src-changed_files }}" || true
 
   lint:
     if: ${{ needs.setup.outputs.should-lint == 'true' }}
