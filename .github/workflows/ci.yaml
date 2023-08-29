@@ -34,7 +34,7 @@ jobs:
       - id: filter
         uses: dorny/paths-filter@v2
         with:
-          base: ${{ github.ref }}
+          base: ${{ github.event_name != 'pull_request' && github.ref }}
           filters: |
             config: &config
               - .github/renovate.json5?
