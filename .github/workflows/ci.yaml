@@ -34,6 +34,7 @@ jobs:
       - id: filter
         uses: dorny/paths-filter@v2
         with:
+          base: ${{ github.ref }}
           filters: |
             config: &config
               - .github/renovate.json5?
