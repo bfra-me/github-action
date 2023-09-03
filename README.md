@@ -1,10 +1,10 @@
 <p align="center">
 
-  [![GitHub Workflow CI Status](https://img.shields.io/github/actions/workflow/status/bfra-me/github-action/ci.yaml?branch=main&style=for-the-badge&logo=github%20actions&logoColor=white&label=ci)][ci-workflow]
+[![GitHub Workflow CI Status](https://img.shields.io/github/actions/workflow/status/bfra-me/github-action/ci.yaml?branch=main&style=for-the-badge&logo=github%20actions&logoColor=white&label=ci)][ci-workflow]
 
 </p>
 
-[ci-workflow]: <https://github.com/bfra-me/github-action/actions?query=workflow%3Aci> 'Search GitHub Actions for CI workflow runs'
+[ci-workflow]: https://github.com/bfra-me/github-action/actions?query=workflow%3Aci 'Search GitHub Actions for CI workflow runs'
 
 # Create a JavaScript Action using TypeScript
 
