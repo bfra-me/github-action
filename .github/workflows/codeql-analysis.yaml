@@ -2,10 +2,12 @@
 name: CodeQL
 
 'on':
+  pull_request:
+    branches: [main]
   push:
-    branches: ['**']
+    branches: [main]
   schedule:
-    - cron: '31 7 * * 3'
+    - cron: '31 7 * * 3' # Every Wednesday at 7:31am UTC
 
 jobs:
   analyze:
