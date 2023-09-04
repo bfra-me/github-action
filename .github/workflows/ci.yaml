@@ -54,18 +54,6 @@ jobs:
               - added|modified: *src-changed
           list-files: json
 
-      - env:
-          dist-changed: ${{ steps.filter.outputs.dist-changed }}
-          node-version: ${{ steps.set-node-version.outputs.node-version }}
-          should-lint: ${{ steps.filter.outputs.should-lint }}
-          src-changed: ${{ steps.filter.outputs.src-changed }}
-        id: _debug_setup
-        run: |
-          # Debug the setup job
-          ${{ env.dist-changed }} && echo "dist-changed: ${{ steps.filter.outputs.dist-changed_files }}" || true
-          ${{ env.should-lint }} && echo "should-lint: ${{ steps.filter.outputs.should-lint_files }}" || true
-          ${{ env.src-changed }} && echo "src-changed: ${{ steps.filter.outputs.src-changed_files }}" || true
-
   lint:
     if: ${{ needs.setup.outputs.should-lint == 'true' }}
     name: Lint
