@@ -171,6 +171,10 @@ jobs:
         name: Push `release` branch
         run: git push origin release:release
       - env:
+          GIT_AUTHOR_EMAIL: '118100583+bfra-me[bot]@users.noreply.github.com'
+          GIT_AUTHOR_NAME: 'bfra.me'
+          GIT_COMMITTER_EMAIL: '118100583+bfra-me[bot]@users.noreply.github.com'
+          GIT_COMMITTER_NAME: 'bfra.me'
           GITHUB_TOKEN: ${{ steps.get-workflow-access-token.outputs.token }}
         name: Semantic Release
         run: |
