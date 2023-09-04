@@ -154,7 +154,7 @@ jobs:
         name: Merge `main` into `release`
         run: |
           git merge --no-ff -Xtheirs -m 'skip: merge (${{ github.sha }}) [skip release]' ${{ github.sha }}
-          commit=$(git rev-parse HEAD)
+          echo "commit=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
       - name: Setup Node.js
         uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3.8.1
         with:
