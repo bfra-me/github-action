@@ -1,7 +1,7 @@
 {
   "name": "github-action",
   "packageManager": "yarn@3.6.3",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "description": "GitHub Action template repository for bfra.me.",
   "main": "dist/index.js",
