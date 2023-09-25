@@ -3,13 +3,12 @@ name: CI
 
 'on':
   pull_request:
-    branches: [main]
   push:
     branches: [main]
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.number || github.sha }}'
+  group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
   cancel-in-progress: true
 
 jobs:
