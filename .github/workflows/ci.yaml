@@ -27,7 +27,7 @@ jobs:
       - env:
           NODE_VERSION: 18.19.0 # renovate: datasource=node depName=node
         id: set-node-version
-        uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7 # v3.8.2
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
           cache: yarn
           node-version: ${{ env.NODE_VERSION }}
@@ -62,7 +62,7 @@ jobs:
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Setup Node.js
-        uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7 # v3.8.2
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
           cache: yarn
           node-version: ${{ needs.setup.outputs.node-version }}
@@ -78,7 +78,7 @@ jobs:
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Setup Node.js
-        uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7 # v3.8.2
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
           cache: yarn
           node-version: ${{ needs.setup.outputs.node-version }}
@@ -109,7 +109,7 @@ jobs:
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Setup Node.js
-        uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7 # v3.8.2
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
           cache: yarn
           node-version: ${{ needs.setup.outputs.node-version }}
@@ -118,7 +118,7 @@ jobs:
       - run: yarn test
 
       - name: Setup Node.js for integration tests
-        uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7 # v3.8.2
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
           node-version: 16
       - uses: ./
@@ -159,7 +159,7 @@ jobs:
           git merge --no-ff -Xtheirs -m 'skip: merge (${{ github.sha }}) [skip release]' ${{ github.sha }}
           echo "commit=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
       - name: Setup Node.js
-        uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7 # v3.8.2
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
           node-version: 'lts/*'
       - name: Enable corepack
