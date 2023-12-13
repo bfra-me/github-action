@@ -11,6 +11,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    shell: 'bash -Eeuxo pipefail {0}'
+
 jobs:
   setup:
     name: Setup
@@ -23,6 +27,11 @@ jobs:
       pull-requests: read
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          egress-policy: audit
+
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - env:
           NODE_VERSION: 20.10.0 # renovate: datasource=node depName=node
@@ -31,6 +40,7 @@ jobs:
         with:
           cache: yarn
           node-version: ${{ env.NODE_VERSION }}
+      - run: yarn install --immutable
       - id: filter
         uses: dorny/paths-filter@4512585405083f25c027a35db413c2b3b9006d50 # v2.11.1
         with:
@@ -40,14 +50,15 @@ jobs:
               - jest.config.js
               - '**.json5?'
               - '**.md'
-              - '**.ya?ml'
+              - '**.yaml'
+              - '**.yml'
             dist-changed:
               - added|modified: 'dist/**'
             src-changed: &src-changed
               - __tests__/**
               - src/**
               - .yarnrc.yml
-              - action.ya?ml
+              - action.yaml
               - package.json
             should-lint:
               - added|modified: *config
@@ -57,9 +68,14 @@ jobs:
   lint:
     if: ${{ needs.setup.outputs.should-lint == 'true' }}
     name: Lint
-    needs: setup
+    needs: [setup]
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          egress-policy: audit
+
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Setup Node.js
         uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
@@ -71,11 +87,16 @@ jobs:
       - run: yarn lint
 
   build:
-    if: ${{ needs.setup.outputs.src-changed == 'true' }}
+    if: ${{ github.ref == 'refs/heads/main' || needs.setup.outputs.src-changed == 'true' }}
     name: Build
-    needs: setup
+    needs: [setup]
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          egress-policy: audit
+
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Setup Node.js
         uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
@@ -104,9 +125,14 @@ jobs:
 
   test:
     name: Test
-    needs: setup
+    needs: [setup]
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          egress-policy: audit
+
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Setup Node.js
         uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
@@ -130,9 +156,17 @@ jobs:
       DRY_RUN: ${{ github.ref_name != github.event.repository.default_branch }}
       FORCE_COLOR: true
     name: Release
-    needs: [setup, lint, test]
+    needs: [setup, lint, test, build]
+    outputs:
+      commit: ${{ steps.merge.outputs.commit }}
+      version: ${{ steps.semantic-release.outputs.version }}
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          egress-policy: audit
+
       - id: get-workflow-access-token
         name: Get Workflow Access Token
         uses: peter-murray/workflow-application-token-action@8e1ba3bf1619726336414f1014e37f17fbadf1db # v2.1.0
@@ -143,7 +177,7 @@ jobs:
       - name: Setup Git user
         run: |
           git config --global user.email '118100583+bfra-me[bot]@users.noreply.github.com'
-          git config --global user.name 'bfra.me'
+          git config --global user.name 'bfra-me[bot]'
       - name: Checkout `release` branch
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
@@ -161,7 +195,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
-          node-version: 'lts/*'
+          cache: yarn
+          node-version: ${{ needs.setup.outputs.node-version }}
       - name: Enable corepack
         run: corepack enable
       - name: Install dependencies
@@ -171,10 +206,11 @@ jobs:
         run: git push origin release:release
       - env:
           GIT_AUTHOR_EMAIL: '118100583+bfra-me[bot]@users.noreply.github.com'
-          GIT_AUTHOR_NAME: 'bfra.me'
+          GIT_AUTHOR_NAME: 'bfra-me[bot]'
           GIT_COMMITTER_EMAIL: '118100583+bfra-me[bot]@users.noreply.github.com'
-          GIT_COMMITTER_NAME: 'bfra.me'
+          GIT_COMMITTER_NAME: 'bfra-me[bot]'
           GITHUB_TOKEN: ${{ steps.get-workflow-access-token.outputs.token }}
+        id: semantic-release
         name: Semantic Release
         run: |
           export GITHUB_REF=refs/heads/release GITHUB_SHA=${{ steps.merge.outputs.commit }}
