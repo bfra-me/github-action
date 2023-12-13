@@ -1,8 +1,32 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   extends: ['github>bfra-me/renovate-config#v2.1.0', 'github>bfra-me/renovate-config:automerge/prForCI#v2.1.0'],
+  packageRules: [
+    {
+      matchFileNames: ['.github/workflows/**'],
+      semanticCommitType: 'ci',
+    },
+    {
+      matchDatasources: ['docker'],
+      semanticCommitType: 'build',
+    },
+    {
+      matchDepTypes: ['dependencies'],
+      semanticCommitType: 'build',
+    },
+    {
+      matchPackageNames: [
+        '@vercel/ncc',
+        'conventional-changelog-conventionalcommits',
+        'semantic-release',
+        'typescript',
+      ],
+      matchPackagePrefixes: ['@semantic-release/'],
+      semanticCommitType: 'build',
+    },
+  ],
   postUpgradeTasks: {
-    commands: ['yarn install', 'yarn run build', 'yarn run format'],
+    commands: ['yarn install', 'yarn run format', 'yarn run build'],
     executionMode: 'branch',
   },
 }
