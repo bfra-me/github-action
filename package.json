@@ -1,6 +1,6 @@
 {
   "name": "github-action",
-  "packageManager": "pnpm@8.12.0",
+  "packageManager": "pnpm@8.12.1",
   "version": "0.0.0-development",
   "private": true,
   "description": "GitHub Action template repository for bfra.me.",
