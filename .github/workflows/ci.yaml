@@ -33,13 +33,11 @@ jobs:
           egress-policy: audit
 
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
-      - env:
-          NODE_VERSION: 20.10.0 # renovate: datasource=node depName=node
-        id: set-node-version
+      - id: set-node-version
         uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
           cache: yarn
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: '.node-version'
       - run: yarn install --immutable
       - id: filter
         uses: dorny/paths-filter@4512585405083f25c027a35db413c2b3b9006d50 # v2.11.1
@@ -143,10 +141,6 @@ jobs:
         run: yarn install --immutable
       - run: yarn test
 
-      - name: Setup Node.js for integration tests
-        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
-        with:
-          node-version: 16
       - uses: ./
         with:
           milliseconds: 1000
