@@ -12,7 +12,18 @@ branches:
     protection:
       required_status_checks:
         strict: true
-        contexts: ['Build', 'Lint', 'Release', 'Test', 'Setup', 'CodeQL', 'Analyze (javascript)']
+        contexts:
+          [
+            'Build',
+            'Check if Renovate should run',
+            'Lint',
+            'Release',
+            'Renovate',
+            'Test',
+            'Setup',
+            'CodeQL',
+            'Analyze (javascript)',
+          ]
       enforce_admins: true
       required_pull_request_reviews: null
       restrictions: null
