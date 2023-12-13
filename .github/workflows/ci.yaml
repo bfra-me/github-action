@@ -33,12 +33,14 @@ jobs:
           egress-policy: audit
 
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598 # v2.4.0
       - id: set-node-version
         uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
-          cache: yarn
+          cache: pnpm
           node-version-file: '.node-version'
-      - run: yarn install --immutable
+      - run: pnpm install --frozen-lockfile
       - id: filter
         uses: dorny/paths-filter@4512585405083f25c027a35db413c2b3b9006d50 # v2.11.1
         with:
@@ -55,7 +57,6 @@ jobs:
             src-changed: &src-changed
               - __tests__/**
               - src/**
-              - .yarnrc.yml
               - action.yaml
               - package.json
             should-lint:
@@ -75,14 +76,16 @@ jobs:
           egress-policy: audit
 
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598 # v2.4.0
       - name: Setup Node.js
         uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
-          cache: yarn
+          cache: pnpm
           node-version: ${{ needs.setup.outputs.node-version }}
-      - run: yarn install --immutable
-      - run: yarn check-format
-      - run: yarn lint
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check-format
+      - run: pnpm lint
 
   build:
     if: ${{ github.ref == 'refs/heads/main' || needs.setup.outputs.src-changed == 'true' }}
@@ -96,15 +99,17 @@ jobs:
           egress-policy: audit
 
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598 # v2.4.0
       - name: Setup Node.js
         uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
-          cache: yarn
+          cache: pnpm
           node-version: ${{ needs.setup.outputs.node-version }}
       - name: Install dependencies
-        run: yarn install --immutable
+        run: pnpm install --frozen-lockfile
       - name: Rebuild the dist/ directory
-        run: yarn build
+        run: pnpm build
       - if: ${{ needs.setup.outputs.dist-changed == 'true' }}
         name: Compare the expected and actual dist/ directories
         run: |
@@ -132,14 +137,16 @@ jobs:
           egress-policy: audit
 
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598 # v2.4.0
       - name: Setup Node.js
         uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
-          cache: yarn
+          cache: pnpm
           node-version: ${{ needs.setup.outputs.node-version }}
       - name: Install dependencies
-        run: yarn install --immutable
-      - run: yarn test
+        run: pnpm install --frozen-lockfile
+      - run: pnpm test
 
       - uses: ./
         with:
@@ -186,15 +193,17 @@ jobs:
         run: |
           git merge --no-ff -Xtheirs -m 'skip: merge (${{ github.sha }}) [skip release]' ${{ github.sha }}
           echo "commit=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+      - name: Setup pnpm
+        uses: pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598 # v2.4.0
       - name: Setup Node.js
         uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
-          cache: yarn
+          cache: pnpm
           node-version: ${{ needs.setup.outputs.node-version }}
       - name: Enable corepack
         run: corepack enable
       - name: Install dependencies
-        run: yarn install --immutable
+        run: pnpm install --frozen-lockfile
       - if: env.DRY_RUN != 'true'
         name: Push `release` branch
         run: git push origin release:release
@@ -208,4 +217,4 @@ jobs:
         name: Semantic Release
         run: |
           export GITHUB_REF=refs/heads/release GITHUB_SHA=${{ steps.merge.outputs.commit }}
-          yarn semantic-release --dry-run ${{ env.DRY_RUN }} --ci ${{ env.DRY_RUN != 'true' }}
+          pnpm semantic-release --dry-run ${{ env.DRY_RUN }} --ci ${{ env.DRY_RUN != 'true' }}
