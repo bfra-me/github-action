@@ -19,6 +19,11 @@ jobs:
     name: Update Repository Settings
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          egress-policy: audit
+
       - name: Get Workflow Access Token
         id: get-workflow-access-token
         uses: peter-murray/workflow-application-token-action@8e1ba3bf1619726336414f1014e37f17fbadf1db # v2.1.0
@@ -27,7 +32,7 @@ jobs:
           application_private_key: ${{ secrets.APPLICATION_PRIVATE_KEY }}
           permissions: 'administration:write, contents:read, issues:write'
 
-      - name: Update Repository Settings (${{ github.repository_owner }}/.github)
+      - name: Update Repository Settings
         uses: elstudio/actions-settings@v3-beta
         env:
           GITHUB_TOKEN: ${{ steps.get-workflow-access-token.outputs.token }}
