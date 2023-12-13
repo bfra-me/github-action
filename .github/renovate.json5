@@ -1,6 +1,9 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
-  extends: ['github>bfra-me/renovate-config#v2.1.0', 'github>bfra-me/renovate-config:automerge/prForCI#v2.1.0'],
+  extends: [
+    'github>bfra-me/renovate-config#v2.1.0',
+    'github>bfra-me/renovate-config:automerge/prForCI#v2.1.0',
+  ],
   packageRules: [
     {
       matchFileNames: ['.github/workflows/**'],
@@ -26,7 +29,12 @@
     },
   ],
   postUpgradeTasks: {
-    commands: ['yarn install', 'yarn run format', 'yarn run build'],
+    commands: [
+      'npm install -g pnpm@8',
+      'pnpm install --frozen-lockfile',
+      'git checkout -- .npmrc',
+      'pnpm run format',
+    ],
     executionMode: 'branch',
   },
 }
