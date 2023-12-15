@@ -30,7 +30,7 @@ branches:
           - 'Test'
           - 'Setup'
           - 'CodeQL'
-          - 'Analyze (TypeScript)'
+          - 'Analyze'
           - 'Update Repository Settings'
       enforce_admins: true
       required_pull_request_reviews: null
