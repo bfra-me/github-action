@@ -3,6 +3,7 @@ name: CI
 
 'on':
   pull_request:
+    types: [opened, synchronize]
   push:
     branches: [main, 'renovate/**']
   workflow_dispatch:
@@ -153,7 +154,6 @@ jobs:
   dependency-review:
     if: ${{ github.event_name == 'pull_request' }}
     name: Dependency Review
-    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner
@@ -171,7 +171,7 @@ jobs:
       DRY_RUN: ${{ github.ref_name != github.event.repository.default_branch }}
       FORCE_COLOR: true
     name: Release
-    needs: [setup, lint, test, build, dependency-review]
+    needs: [setup, lint, test, build]
     outputs:
       commit: ${{ steps.merge.outputs.commit }}
       version: ${{ steps.semantic-release.outputs.version }}

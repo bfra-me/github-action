@@ -22,7 +22,6 @@ branches:
         strict: false
         contexts:
           - 'Build'
-          - 'Check if Renovate should run'
           - 'Dependency Review'
           - 'Lint'
           - 'Release'
