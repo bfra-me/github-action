@@ -63,6 +63,7 @@ jobs:
         uses: bfra-me/renovate-action@6dc559aa46519a99c6cf514ed1de180956067643 # v2.2.5
         with:
           branch: ${{ github.ref != 'refs/heads/main' && github.ref_name || '' }}
+          cache: ${{ github.event_name == 'push' && contains('["main", "renovate/reconfigure"]', github.ref_name) }}
           dry_run: ${{ github.event_name == 'push' && !contains('["main", "renovate/reconfigure"]', github.ref_name) }}
           print_config: ${{ inputs.print_config }}
           renovate_app_id: ${{ secrets.APPLICATION_ID }}
