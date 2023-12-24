@@ -1,5 +1,5 @@
 ---
-# Renovate this repository if this workflow file or the Renovate configuration file is changed.
+# Renovate this repository if Renovate-specific tasks are checked or if dispatched.
 name: Renovate
 
 'on':
@@ -45,6 +45,11 @@ jobs:
     name: Renovate
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          egress-policy: audit
+
       - if: github.event_name == 'push'
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - id: filter
@@ -60,7 +65,7 @@ jobs:
         run: echo 'renovate=true' >> $GITHUB_OUTPUT
       - name: Renovate
         if: steps.should-renovate.outputs.renovate == 'true'
-        uses: bfra-me/renovate-action@6dc559aa46519a99c6cf514ed1de180956067643 # v2.2.5
+        uses: bfra-me/renovate-action@ea4e4086b9480de558b8f2389450ac8dfedce10b # v2.2.6
         with:
           branch: ${{ github.ref != 'refs/heads/main' && github.ref_name || '' }}
           cache: ${{ github.event_name == 'push' && contains('["main", "renovate/reconfigure"]', github.ref_name) }}
