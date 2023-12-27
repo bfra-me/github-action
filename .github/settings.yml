@@ -28,7 +28,6 @@ branches:
           - 'Renovate'
           - 'Test'
           - 'Setup'
-          - 'CodeQL'
           - 'Analyze'
       enforce_admins: true
       required_pull_request_reviews: null
