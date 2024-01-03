@@ -18,21 +18,13 @@ teams:
 branches:
   - name: main
     protection:
+      enforce_admins: true
+      required_linear_history: true
+      required_pull_request_reviews: null
       required_status_checks:
         strict: false
-        contexts:
-          - 'Build'
-          - 'Dependency Review'
-          - 'Lint'
-          - 'Release'
-          - 'Renovate'
-          - 'Test'
-          - 'Setup'
-          - 'Analyze'
-      enforce_admins: true
-      required_pull_request_reviews: null
+        contexts: ['Build', 'Lint', 'Release', 'Test', 'Setup', 'Renovate', 'Analyze']
       restrictions: null
-      required_linear_history: true
 
   - name: release
     protection:
