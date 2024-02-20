@@ -197,9 +197,9 @@ jobs:
           GIT_AUTHOR_NAME: 'bfra-me[bot]'
           GIT_COMMITTER_EMAIL: '118100583+bfra-me[bot]@users.noreply.github.com'
           GIT_COMMITTER_NAME: 'bfra-me[bot]'
-          GITHUB_REF: refs/heads/${{ env.RELEASE_BRANCH }}
-          GITHUB_SHA: ${{ steps.merge.outputs.commit }}
           GITHUB_TOKEN: ${{ steps.get-workflow-access-token.outputs.token }}
         id: semantic-release
         name: Semantic Release
-        run: pnpm semantic-release --dry-run ${{ env.DRY_RUN }} --ci ${{ env.DRY_RUN != 'true' }}
+        run: |
+          export GITHUB_REF=refs/heads/${{ env.RELEASE_BRANCH }} GITHUB_SHA=${{ steps.merge.outputs.commit }}
+          pnpm semantic-release --dry-run ${{ env.DRY_RUN }} --ci ${{ env.DRY_RUN != 'true' }}
