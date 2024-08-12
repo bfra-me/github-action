@@ -17,18 +17,16 @@
         'semantic-release',
         'typescript',
       ],
-      matchPackagePrefixes: ['@semantic-release/'],
       semanticCommitType: 'build',
+    },
+    {
+      matchPackageNames: ['conventional-changelog-conventionalcommits', 'semantic-release'],
+      matchUpdateTypes: ['major'],
+      groupName: 'semantic-release and conventionalcommits major updates',
     },
   ],
   postUpgradeTasks: {
-    commands: [
-      'npm install -g pnpm@9.7.0',
-      'pnpm install --frozen-lockfile',
-      'git checkout -- .npmrc',
-      'pnpm run build-release',
-      'pnpm run format',
-    ],
+    commands: ['npm install -g pnpm@9.7.0', 'pnpm run bootstrap', 'git checkout -- .npmrc'],
     executionMode: 'branch',
   },
 }
