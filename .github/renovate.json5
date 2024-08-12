@@ -22,11 +22,12 @@
     {
       matchPackageNames: ['conventional-changelog-conventionalcommits', 'semantic-release'],
       matchUpdateTypes: ['major'],
-      groupName: 'semantic-release and conventionalcommits major updates',
+      groupName: 'semantic-release and conventionalcommits',
+      semanticCommitType: 'feat',
     },
   ],
   postUpgradeTasks: {
-    commands: ['npm install -g pnpm@9.7.0', 'pnpm run bootstrap', 'git checkout -- .npmrc'],
+    commands: ['pnpm run bootstrap'],
     executionMode: 'branch',
   },
 }
