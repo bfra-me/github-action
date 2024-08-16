@@ -4,6 +4,7 @@
   "version": "0.0.0-development",
   "private": true,
   "description": "GitHub Action template repository for bfra.me.",
+  "type": "module",
   "main": "dist/index.js",
   "scripts": {
     "bootstrap": "pnpm install && pnpm run build-release && pnpm run format",
