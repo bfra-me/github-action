@@ -1,12 +1,11 @@
 {
+  "extends": "@bfra.me/tsconfig",
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "outDir": "./lib",
-    "strict": true,
-    "noImplicitAny": true,
-    "esModuleInterop": true
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "target": "ESNext"
   },
-  "exclude": ["node_modules", "**/*.test.ts"],
+  "exclude": ["dist", "node_modules", "**/*.test.ts"],
   "include": ["src"]
 }
