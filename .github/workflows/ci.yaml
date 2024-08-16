@@ -75,6 +75,7 @@ jobs:
           node-version: ${{ needs.setup.outputs.node-version }}
       - run: pnpm install --frozen-lockfile
       - run: pnpm check-format
+      - run: pnpm check-types
       - run: pnpm lint
 
   build:
