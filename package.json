@@ -1,37 +1,39 @@
 {
   "name": "github-action",
-  "packageManager": "pnpm@9.7.0",
   "version": "0.0.0-development",
   "private": true,
   "description": "GitHub Action template repository for bfra.me.",
+  "keywords": [
+    "github-actions",
+    "nodejs",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bfra-me/github-action.git"
+  },
+  "license": "MIT",
+  "author": "Marcus R. Brown <git@mrbro.dev>",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
     "bootstrap": "pnpm install && pnpm run build-release && pnpm run fix && pnpm run format",
     "build": "ncc build src/main.ts --license licenses.txt -o dist",
     "build-release": "ncc build src/main.ts --license licenses.txt -o dist --minify --no-cache --no-source-map-register",
-    "format": "prettier --write .",
     "check-format": "prettier --check .",
     "check-types": "tsc",
     "fix": "pnpm run format && pnpm run lint --fix",
+    "format": "prettier --write .",
     "lint": "eslint .",
     "test": "vitest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bfra-me/github-action.git"
-  },
-  "keywords": [
-    "github-actions",
-    "nodejs",
-    "typescript"
-  ],
-  "author": "Marcus R. Brown <contact@marcusrbrown.com>",
-  "license": "MIT",
+  "prettier": "@bfra.me/prettier-config/120-proof",
   "dependencies": {
     "@actions/core": "1.10.1"
   },
   "devDependencies": {
+    "@bfra.me/prettier-config": "0.4.0",
+    "@bfra.me/tsconfig": "0.6.0",
     "@eslint-types/import": "2.29.1",
     "@eslint-types/typescript-eslint": "7.5.0",
     "@eslint/eslintrc": "3.1.0",
@@ -50,5 +52,6 @@
     "typescript": "5.5.4",
     "typescript-eslint": "8.1.0",
     "vitest": "1.6.0"
-  }
+  },
+  "packageManager": "pnpm@9.7.0"
 }

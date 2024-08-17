@@ -24,10 +24,7 @@ export default defineFlatConfig([
       sourceType: 'module',
 
       parserOptions: {
-        projectService: {
-          allowDefaultProject: ['eslint.config.mjs'],
-          defaultProject: './tsconfig.json',
-        },
+        projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
     },

@@ -26,6 +26,12 @@
       groupName: 'semantic-release and conventionalcommits',
       semanticCommitType: 'feat',
     },
+    {
+      description: 'Keep the bfra-me/renovate-config preset pinned.',
+      matchPackageNames: ['bfra-me/renovate-config'],
+      rangeStrategy: 'pin',
+      updatePinnedDependencies: false,
+    },
   ],
   postUpgradeTasks: {
     commands: ['pnpm run bootstrap'],
