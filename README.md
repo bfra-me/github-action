@@ -4,7 +4,7 @@
 
 </p>
 
-[ci-workflow]: https://github.com/bfra-me/github-action/actions?query=workflow%3Aci 'Search GitHub Actions for CI workflow runs'
+[ci-workflow]: https://github.com/bfra-me/github-action/actions?query=workflow%3Aci "Search GitHub Actions for CI workflow runs"
 
 # Create a JavaScript Action using TypeScript
 

@@ -1,35 +1,36 @@
 {
   "name": "github-action",
-  "packageManager": "pnpm@9.7.0",
   "version": "0.0.0-development",
   "private": true,
   "description": "GitHub Action template repository for bfra.me.",
+  "keywords": [
+    "github-actions",
+    "nodejs",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bfra-me/github-action.git"
+  },
+  "license": "MIT",
+  "author": "Marcus R. Brown <git@mrbro.dev>",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
     "bootstrap": "pnpm install && pnpm run build-release && pnpm run format",
     "build": "ncc build src/main.ts --license licenses.txt -o dist",
     "build-release": "ncc build src/main.ts --license licenses.txt -o dist --minify --no-cache --no-source-map-register",
-    "format": "prettier --write .",
     "check-format": "prettier --check .",
+    "format": "prettier --write .",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "test": "vitest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bfra-me/github-action.git"
-  },
-  "keywords": [
-    "github-actions",
-    "nodejs",
-    "typescript"
-  ],
-  "author": "Marcus R. Brown <contact@marcusrbrown.com>",
-  "license": "MIT",
+  "prettier": "@bfra.me/prettier-config/120-proof",
   "dependencies": {
     "@actions/core": "1.10.1"
   },
   "devDependencies": {
+    "@bfra.me/prettier-config": "0.4.0",
     "@bfra.me/tsconfig": "0.6.0",
     "@semantic-release/git": "10.0.1",
     "@types/node": "20.14.10",
@@ -43,5 +44,6 @@
     "semantic-release": "24.0.0",
     "typescript": "5.5.4",
     "vitest": "1.6.0"
-  }
+  },
+  "packageManager": "pnpm@9.7.0"
 }
