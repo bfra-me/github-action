@@ -4,6 +4,7 @@
   "version": "0.0.0-development",
   "private": true,
   "description": "GitHub Action template repository for bfra.me.",
+  "type": "module",
   "main": "dist/index.js",
   "scripts": {
     "bootstrap": "pnpm install && pnpm run build-release && pnpm run format",
@@ -29,6 +30,7 @@
     "@actions/core": "1.10.1"
   },
   "devDependencies": {
+    "@bfra.me/tsconfig": "0.6.0",
     "@semantic-release/git": "10.0.1",
     "@types/node": "20.14.10",
     "@typescript-eslint/eslint-plugin": "7.18.0",
