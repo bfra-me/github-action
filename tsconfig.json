@@ -8,6 +8,6 @@
     "noEmit": true,
     "target": "ESNext"
   },
-  "exclude": ["dist", "node_modules", "**/*.test.ts"],
-  "include": ["src", "eslint.config.ts"]
+  "exclude": ["dist", "node_modules"],
+  "include": ["**/*.ts"]
 }
