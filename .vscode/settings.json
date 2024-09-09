@@ -1,6 +1,10 @@
 {
     "cSpell.words": ["actioneers", "automerge", "bfra", "conventionalcommits", "Parens", "yarnpkg"],
 
+    "eslint.options": {
+        "flags": ["unstable_ts_config"]
+    },
+
     "typescript.enablePromptUseWorkspaceTsdk": true,
     "typescript.tsdk": "node_modules/typescript/lib"
 }

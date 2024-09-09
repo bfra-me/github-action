@@ -1,32 +1,32 @@
-// @ts-check
 import eslint from '@eslint/js'
-import {defineFlatConfig} from 'eslint-define-config'
+import type {Linter} from 'eslint'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
 /// <reference types="@eslint-types/import" />
 /// <reference types="@eslint-types/typescript-eslint" />
 
-// @ts-expect-error - TODO: Need to cast to the return type of `tseslint.config`
-export default defineFlatConfig([
+export default tseslint.config(
+  eslint.configs.recommended,
+  ...tseslint.configs.recommendedTypeChecked,
   {
     ignores: ['**/__tests__', '**/dist', '**/lib', '**/node_modules'],
   },
-  ...tseslint.config(eslint.configs.recommended, ...tseslint.configs.recommendedTypeChecked),
 
   {
     languageOptions: {
+      ecmaVersion: 2022,
       globals: {
+        ...globals.es2021,
         ...globals.node,
       },
 
-      ecmaVersion: 2018,
-      sourceType: 'module',
-
       parserOptions: {
+        ecmaVersion: 2022,
         projectService: true,
-        tsconfigRootDir: import.meta.dirname,
+        sourceType: 'module',
       },
+      sourceType: 'module',
     },
 
     rules: {
@@ -86,4 +86,4 @@ export default defineFlatConfig([
       '@typescript-eslint/unbound-method': 'error',
     },
   },
-])
+) as Linter.Config

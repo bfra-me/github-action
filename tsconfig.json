@@ -1,11 +1,13 @@
 {
   "extends": "@bfra.me/tsconfig",
   "compilerOptions": {
+    "composite": false,
+    "declaration": false,
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "noEmit": true,
     "target": "ESNext"
   },
   "exclude": ["dist", "node_modules", "**/*.test.ts"],
-  "include": ["src", "eslint.config.*"]
+  "include": ["src", "eslint.config.ts"]
 }
