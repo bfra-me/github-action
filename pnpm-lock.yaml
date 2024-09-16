@@ -16,8 +16,8 @@ importers:
         specifier: 0.7.1
         version: 0.7.1(prettier@3.3.3)
       '@bfra.me/tsconfig':
-        specifier: 0.6.0
-        version: 0.6.0
+        specifier: 0.7.0
+        version: 0.7.0
       '@eslint/js':
         specifier: 9.10.0
         version: 9.10.0
@@ -101,8 +101,8 @@ packages:
     peerDependencies:
       prettier: ^3.0.0
 
-  '@bfra.me/tsconfig@0.6.0':
-    resolution: {integrity: sha512-YS/JhF+Ta3QsYpiZUk27BEaPxd8PvTeU+k8oN+gjIIg2n+hJBq9b/hdWww1CEOaDJaYrIYaJwUdWDcXt7w5kug==}
+  '@bfra.me/tsconfig@0.7.0':
+    resolution: {integrity: sha512-hJ/irdEfXYoMlgAJ0Tx7ji8R5yJPZuvOB39Hg0DLNghHa5RtnyREhYKBY8zKcxW9+5lII1luyg/AAU/zNuCLMQ==}
 
   '@colors/colors@1.5.0':
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
@@ -2147,7 +2147,7 @@ snapshots:
       prettier: 3.3.3
       sort-package-json: 2.10.0
 
-  '@bfra.me/tsconfig@0.6.0':
+  '@bfra.me/tsconfig@0.7.0':
     dependencies:
       '@tsconfig/strictest': 2.0.5
 
