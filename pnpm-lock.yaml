@@ -13,8 +13,8 @@ importers:
         version: 1.10.1
     devDependencies:
       '@bfra.me/prettier-config':
-        specifier: 0.7.0
-        version: 0.7.0(prettier@3.3.3)
+        specifier: 0.7.1
+        version: 0.7.1(prettier@3.3.3)
       '@bfra.me/tsconfig':
         specifier: 0.6.0
         version: 0.6.0
@@ -91,8 +91,8 @@ packages:
     resolution: {integrity: sha512-EStJpq4OuY8xYfhGVXngigBJRWxftKX9ksiGDnmlY3o7B/V7KIAc9X4oiK87uPJSc/vs5L869bem5fhZa8caZw==}
     engines: {node: '>=6.9.0'}
 
-  '@bfra.me/prettier-config@0.7.0':
-    resolution: {integrity: sha512-qDEvAogLkPLI2l2lbk6i4bhQYKSTGkkEhqHhyiAem/AfwdwCu7uMbx7pDRwqfFJMFhSKalvn7wmoTh5dHh+fOw==}
+  '@bfra.me/prettier-config@0.7.1':
+    resolution: {integrity: sha512-/N/na3Hhrgq+7Ircl2XLc5TXLSrTSrDRcrrLzKvZ/d48aaxwBhX5lwjSOtpnJ8g5Xh5pl9FBOZ6zupLWgePcOA==}
     peerDependencies:
       prettier: ^3.0.0
 
@@ -2137,7 +2137,7 @@ snapshots:
       js-tokens: 4.0.0
       picocolors: 1.1.0
 
-  '@bfra.me/prettier-config@0.7.0(prettier@3.3.3)':
+  '@bfra.me/prettier-config@0.7.1(prettier@3.3.3)':
     dependencies:
       '@bfra.me/prettier-plugins': 0.3.0(prettier@3.3.3)
       prettier: 3.3.3
