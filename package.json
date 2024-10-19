@@ -29,7 +29,7 @@
   },
   "prettier": "@bfra.me/prettier-config/120-proof",
   "dependencies": {
-    "@actions/core": "1.11.0"
+    "@actions/core": "1.11.1"
   },
   "devDependencies": {
     "@bfra.me/prettier-config": "0.7.4",
