@@ -13,8 +13,8 @@ importers:
         version: 1.11.1
     devDependencies:
       '@bfra.me/prettier-config':
-        specifier: 0.9.1
-        version: 0.9.1(prettier@3.3.3)
+        specifier: 0.9.3
+        version: 0.9.3(prettier@3.3.3)
       '@bfra.me/tsconfig':
         specifier: 0.8.1
         version: 0.8.1
@@ -93,8 +93,8 @@ packages:
     resolution: {integrity: sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ==}
     engines: {node: '>=6.9.0'}
 
-  '@bfra.me/prettier-config@0.9.1':
-    resolution: {integrity: sha512-30BkdierAhWmn9qhi0jYMSNpYEYoz0b1dq15zc4V09sKO6U+s4/gm1k1OXDsGMjpcy3NvzUhVY424SdlAvy/zA==}
+  '@bfra.me/prettier-config@0.9.3':
+    resolution: {integrity: sha512-VhVbIBgT6H4h3LPpRN8H1UBMFvJhYG4FqaOXUS5MiaWsCHpOugw9waYEGNn/8lTZG8H3XAEjBKJpi5toux07Tg==}
     peerDependencies:
       prettier: ^3.0.0
 
@@ -2167,7 +2167,7 @@ snapshots:
 
   '@babel/helper-validator-identifier@7.25.9': {}
 
-  '@bfra.me/prettier-config@0.9.1(prettier@3.3.3)':
+  '@bfra.me/prettier-config@0.9.3(prettier@3.3.3)':
     dependencies:
       '@bfra.me/prettier-plugins': 0.5.1(prettier@3.3.3)
       prettier: 3.3.3
