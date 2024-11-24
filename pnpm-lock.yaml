@@ -19,8 +19,8 @@ importers:
         specifier: 0.9.4
         version: 0.9.4(prettier@3.3.3)
       '@bfra.me/tsconfig':
-        specifier: 0.8.1
-        version: 0.8.1
+        specifier: 0.9.1
+        version: 0.9.1
       '@semantic-release/git':
         specifier: 10.0.1
         version: 10.0.1(semantic-release@24.2.0(typescript@5.6.3))
@@ -114,8 +114,8 @@ packages:
     peerDependencies:
       prettier: ^3.0.0
 
-  '@bfra.me/tsconfig@0.8.1':
-    resolution: {integrity: sha512-6/gbTMCyxM9e4pr9/fiaqm+5qrGsIkZLj+7/UZwRXozSQQyN7vIgQCU/EbHzidAT7qsHMN2UgS53+jyfu9zMXg==}
+  '@bfra.me/tsconfig@0.9.1':
+    resolution: {integrity: sha512-ThHia47cCABmg7c7KqunUQjl8wDXtbOEo0tbWHAxk+YmkoGiblTx9MmADFD3DoZ2KBKN8S9IDVjLz8ZD5D9t8A==}
 
   '@colors/colors@1.5.0':
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
@@ -2794,7 +2794,7 @@ snapshots:
       prettier: 3.3.3
       sort-package-json: 2.11.0
 
-  '@bfra.me/tsconfig@0.8.1': {}
+  '@bfra.me/tsconfig@0.9.1': {}
 
   '@colors/colors@1.5.0':
     optional: true
