@@ -4,7 +4,7 @@ import type {Dependency} from 'esbuild-plugin-license'
 const {default: esbuildPluginLicense} = require('esbuild-plugin-license')
 
 const config: Options = {
-  clean: true,
+  banner: {js: "import {createRequire} from 'node:module';const require=createRequire(import.meta.url);"},
   entry: {
     index: 'src/main.ts',
   },
