@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import type {Options} from 'tsup'
-import esbuildPluginLicense, {type Dependency} from 'esbuild-plugin-license'
+import type {Dependency} from 'esbuild-plugin-license'
+const {default: esbuildPluginLicense} = require('esbuild-plugin-license')
 
-export default {
+const config: Options = {
   clean: true,
   entry: {
     index: 'src/main.ts',
@@ -18,7 +20,9 @@ export default {
         },
       },
     }),
-  ] as Options['esbuildPlugins'],
+  ],
   format: 'esm',
   noExternal: ['@actions/core'],
-} as Options
+}
+
+module.exports = config
