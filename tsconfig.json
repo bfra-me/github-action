@@ -1,8 +1,6 @@
 {
   "extends": "@bfra.me/tsconfig",
   "compilerOptions": {
-    "composite": false,
-    "declaration": false,
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "noEmit": true,
