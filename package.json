@@ -34,7 +34,7 @@
   "devDependencies": {
     "@bfra.me/eslint-config": "0.4.7",
     "@bfra.me/prettier-config": "0.9.4",
-    "@bfra.me/tsconfig": "0.8.1",
+    "@bfra.me/tsconfig": "0.9.1",
     "@semantic-release/git": "10.0.1",
     "@swc/core": "1.9.3",
     "@types/node": "22.9.3",
