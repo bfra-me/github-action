@@ -32,7 +32,7 @@
     "@actions/core": "1.11.1"
   },
   "devDependencies": {
-    "@bfra.me/eslint-config": "0.4.8",
+    "@bfra.me/eslint-config": "0.4.9",
     "@bfra.me/prettier-config": "0.9.4",
     "@bfra.me/tsconfig": "0.9.1",
     "@semantic-release/git": "10.0.1",
