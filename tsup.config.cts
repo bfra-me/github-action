@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import type {Options} from 'tsup'
 import type {Dependency} from 'esbuild-plugin-license'
+import type {Options} from 'tsup'
 const {default: esbuildPluginLicense} = require('esbuild-plugin-license')
 
 const config: Options = {
