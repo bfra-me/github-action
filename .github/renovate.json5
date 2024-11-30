@@ -12,12 +12,7 @@
       semanticCommitType: 'build',
     },
     {
-      matchPackageNames: [
-        '@vercel/ncc',
-        'conventional-changelog-conventionalcommits',
-        'semantic-release',
-        'typescript',
-      ],
+      matchPackageNames: ['tsup', 'conventional-changelog-conventionalcommits', 'semantic-release', 'typescript'],
       semanticCommitType: 'build',
     },
     {
