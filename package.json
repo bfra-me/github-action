@@ -17,7 +17,7 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "bootstrap": "pnpm install --prefer-frozen-lockfile --ignore-scripts --prefer-offline --loglevel error",
+    "bootstrap": "pnpm install --ignore-scripts --prefer-offline --loglevel error",
     "build": "tsup",
     "build-release": "tsup --minify",
     "check-format": "prettier --check .",

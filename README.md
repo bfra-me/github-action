@@ -60,15 +60,14 @@ See the [documentation](https://help.github.com/en/articles/metadata-syntax-for-
 Most toolkit and CI/CD operations involve async operations so the action is run in an async function.
 
 ```javascript
-import * as core from '@actions/core';
-...
+import * as core from "@actions/core"
+// ...
 
 async function run() {
   try {
-      ...
-  }
-  catch (error) {
-    core.setFailed(error.message);
+    // ...
+  } catch (error) {
+    core.setFailed(error.message)
   }
 }
 
