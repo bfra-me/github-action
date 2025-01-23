@@ -1,6 +1,9 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
-  extends: ['github>bfra-me/renovate-config#v3', 'github>bfra-me/renovate-config:internal.json5#v3'],
+  extends: [
+    'github>bfra-me/renovate-config#v3',
+    'github>bfra-me/renovate-config:internal.json5#v3',
+  ],
   automergeType: 'pr',
   packageRules: [
     {
@@ -12,7 +15,12 @@
       semanticCommitType: 'build',
     },
     {
-      matchPackageNames: ['tsup', 'conventional-changelog-conventionalcommits', 'semantic-release', 'typescript'],
+      matchPackageNames: [
+        'tsup',
+        'conventional-changelog-conventionalcommits',
+        'semantic-release',
+        'typescript',
+      ],
       semanticCommitType: 'build',
     },
     {
