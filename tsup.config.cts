@@ -4,7 +4,9 @@ import type {Options} from 'tsup'
 const {default: esbuildPluginLicense} = require('esbuild-plugin-license')
 
 const config: Options = {
-  banner: {js: "import {createRequire} from 'node:module';const require=createRequire(import.meta.url);"},
+  banner: {
+    js: "import {createRequire} from 'node:module';const require=createRequire(import.meta.url);",
+  },
   entry: {
     index: 'src/main.ts',
   },
@@ -15,7 +17,10 @@ const config: Options = {
           file: 'licenses.txt',
           template: (dependencies: Dependency[]) =>
             dependencies
-              .map(({packageJson, licenseText}) => `${packageJson.name}\n${packageJson.license}\n${licenseText}`)
+              .map(
+                ({packageJson, licenseText}) =>
+                  `${packageJson.name}\n${packageJson.license}\n${licenseText}`,
+              )
               .join('\n\n'),
         },
       },
