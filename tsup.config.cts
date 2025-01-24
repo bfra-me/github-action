@@ -17,10 +17,7 @@ const config: Options = {
           file: 'licenses.txt',
           template: (dependencies: Dependency[]) =>
             dependencies
-              .map(
-                ({packageJson, licenseText}) =>
-                  `${packageJson.name}\n${packageJson.license}\n${licenseText}`,
-              )
+              .map(({packageJson, licenseText}) => `${packageJson.name}\n${packageJson.license}\n${licenseText}`)
               .join('\n\n'),
         },
       },
