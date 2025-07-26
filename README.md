@@ -12,32 +12,33 @@ Use this template to bootstrap the creation of a TypeScript action. :rocket:
 
 This template includes compilation support, tests, a validation workflow, publishing, and versioning guidance.
 
-If you are new, there's also a simpler introduction. See the [Hello World JavaScript Action](https://github.com/actions/hello-world-javascript-action)
-
 ## Create an action from this template
 
 Click the `Use this Template` and provide the new repo details for your action
 
-## Code in Main
-
-> First, you'll need to have a reasonably modern version of `node` handy. This won't work with versions older than 9, for instance.
-
-Install the dependencies
+## Clone the repo
 
 ```bash
-npm install
+git clone https://github.com/bfra-me/github-action.git
+cd github-action
 ```
 
-Transpile TypeScript to JavaScript and package it for distribution:
+## Install dependencies
 
 ```bash
-npm run build
+pnpm install
+```
+
+## Build and Test
+
+```bash
+pnpm run build
 ```
 
 Run the tests :heavy_check_mark:
 
 ```bash
-$ npm test
+$ pnpm test
 
  PASS  ./index.test.js
   ✓ throws invalid number (3ms)
@@ -47,13 +48,11 @@ $ npm test
 ...
 ```
 
-## Change action.yml
+## Change action.yaml
 
-The action.yml defines the inputs and output for your action.
+The action.yaml defines the inputs and output for your action.
 
-Update the action.yml with your name, description, inputs and outputs for your action.
-
-See the [documentation](https://help.github.com/en/articles/metadata-syntax-for-github-actions)
+Update the action.yaml with your name, description, inputs and outputs for your action.
 
 ## Change the Code
 
@@ -74,16 +73,14 @@ async function run() {
 run()
 ```
 
-See the [toolkit documentation](https://github.com/actions/toolkit/blob/master/README.md#packages) for the various packages.
-
 ## Publish to a distribution branch
 
 Actions are run from GitHub repos so we will check in the packed dist folder.
 
-Then run [ncc](https://www.npmjs.com/package/@vercel/ncc) and push the results:
+Then build and push the results:
 
 ```bash
-npm run build
+pnpm run build
 git add dist
 git commit -a -m "prod dependencies"
 git push origin releases/v1
@@ -93,11 +90,9 @@ Note: We recommend using the `--license` option for ncc, which will create a lic
 
 Your action is now published! :rocket:
 
-See the [versioning documentation](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
-
 ## Validate
 
-You can now validate the action by referencing `./` in a workflow in your repo (see [test.yml](.github/workflows/test.yml))
+You can now validate the action by referencing `./` in a workflow in your repo (see [ci.yaml](.github/workflows/ci.yaml)).
 
 ```yaml
 uses: ./
@@ -109,4 +104,18 @@ See the [actions tab](https://github.com/bfra-me/github-action/actions) for runs
 
 ## Usage
 
-After testing you can [create a v1 tag](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md) to reference the stable and latest V1 action
+You can use this action in your workflows like this:
+
+```yaml
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run my action
+        uses: bfra-me/github-action@v2
+        with:
+          milliseconds: 1000
+```

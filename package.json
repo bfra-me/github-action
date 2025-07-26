@@ -20,10 +20,8 @@
     "bootstrap": "pnpm install --prefer-offline --loglevel warn",
     "build": "tsup",
     "build-release": "tsup --minify",
-    "check-format": "prettier --check .",
     "check-types": "tsc",
-    "fix": "pnpm run format && pnpm run lint --fix",
-    "format": "prettier --write .",
+    "fix": "pnpm run lint --fix",
     "lint": "eslint .",
     "test": "vitest run"
   },
