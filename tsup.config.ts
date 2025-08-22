@@ -28,4 +28,4 @@ const config: Options = {
   noExternal: ['@actions/core'],
 }
 
-module.exports = config
+export default config
