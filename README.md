@@ -183,7 +183,9 @@ git tag -a v1 -m "Version 1"
 git push origin v1
 ```
 
-> [!TIP] Users can reference your action using `@v1` for the latest v1.x.x release, or `@v1.0.0` for a specific version.
+> [!TIP]
+>
+> Users can reference your action using `@v1` for the latest v1.x.x release, or `@v1.0.0` for a specific version.
 
 ## Project Structure
 
