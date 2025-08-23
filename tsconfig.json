@@ -7,5 +7,5 @@
     "target": "ESNext"
   },
   "exclude": ["dist", "node_modules"],
-  "include": ["**/*.ts", "tsup.config.cts"]
+  "include": ["**/*.ts", "tsup.config.ts"]
 }
