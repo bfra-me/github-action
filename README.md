@@ -1,121 +1,231 @@
-<p align="center">
+# TypeScript GitHub Action Template
 
-[![GitHub Workflow CI Status](https://img.shields.io/github/actions/workflow/status/bfra-me/github-action/ci.yaml?branch=main&style=for-the-badge&logo=github%20actions&logoColor=white&label=ci)][ci-workflow]
+[![CI](https://img.shields.io/github/actions/workflow/status/bfra-me/github-action/ci.yaml?branch=main&style=for-the-badge&logo=github-actions&logoColor=white&label=ci)](https://github.com/bfra-me/github-action/actions?query=workflow%3Aci) [![TypeScript](https://img.shields.io/badge/TypeScript-blue?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org) [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-</p>
+> A production-ready TypeScript template for creating GitHub Actions with modern tooling and best practices.
 
-[ci-workflow]: https://github.com/bfra-me/github-action/actions?query=workflow%3Aci "Search GitHub Actions for CI workflow runs"
+This template provides everything you need to build, test, and publish TypeScript-based GitHub Actions. It includes comprehensive tooling for development, testing, linting, and automated publishing workflows.
 
-# Create a JavaScript Action using TypeScript
+## Features
 
-Use this template to bootstrap the creation of a TypeScript action. :rocket:
+- **TypeScript First** - Full TypeScript support with strict type checking
+- **Modern Tooling** - ESLint, Prettier, and Vitest for development workflow
+- **Automated Building** - Uses `tsup` for fast, optimized bundling
+- **Comprehensive Testing** - Unit tests with Vitest and integration testing setup
+- **CI/CD Ready** - GitHub Actions workflow for testing and validation
+- **Zero Dependencies Runtime** - Only uses `@actions/core` for minimal footprint
 
-This template includes compilation support, tests, a validation workflow, publishing, and versioning guidance.
+## Quick Start
 
-## Create an action from this template
+### 1. Use This Template
 
-Click the `Use this Template` and provide the new repo details for your action
-
-## Clone the repo
+Click **"Use this template"** to create a new repository from this template, or clone it directly:
 
 ```bash
-git clone https://github.com/bfra-me/github-action.git
-cd github-action
+git clone https://github.com/bfra-me/github-action.git my-action
+cd my-action
 ```
 
-## Install dependencies
+### 2. Install Dependencies
 
 ```bash
 pnpm install
 ```
 
-## Build and Test
+### 3. Customize Your Action
 
-```bash
-pnpm run build
+Update `action.yaml` with your action's metadata:
+
+```yaml
+name: Your Action Name
+description: Your action description
+author: Your Name
+inputs:
+  your-input:
+    description: Input description
+    required: true
+    default: default value
+outputs:
+  your-output:
+    description: Output description
+runs:
+  using: node20
+  main: dist/index.js
 ```
 
-Run the tests :heavy_check_mark:
+### 4. Implement Your Logic
 
-```bash
-$ pnpm test
-
- PASS  ./index.test.js
-  ✓ throws invalid number (3ms)
-  ✓ wait 500 ms (504ms)
-  ✓ test runs (95ms)
-
-...
-```
-
-## Change action.yaml
-
-The action.yaml defines the inputs and output for your action.
-
-Update the action.yaml with your name, description, inputs and outputs for your action.
-
-## Change the Code
-
-Most toolkit and CI/CD operations involve async operations so the action is run in an async function.
+Replace the example code in `src/main.ts`:
 
 ```javascript
-import * as core from "@actions/core"
-// ...
+import * as core from '@actions/core'
 
 async function run() {
   try {
-    // ...
+    const input = core.getInput('your-input')
+
+    // Your action logic here
+    const result = `Processed: ${input}`
+
+    core.setOutput('your-output', result)
   } catch (error) {
-    core.setFailed(error.message)
+    if (error instanceof Error) {
+      core.setFailed(error.message)
+    }
   }
 }
 
-run()
+await run()
 ```
 
-## Publish to a distribution branch
+## Development
 
-Actions are run from GitHub repos so we will check in the packed dist folder.
-
-Then build and push the results:
+### Building
 
 ```bash
+# Development build
 pnpm run build
-git add dist
-git commit -a -m "prod dependencies"
-git push origin releases/v1
+
+# Production build with minification
+pnpm run build-release
 ```
 
-Note: We recommend using the `--license` option for ncc, which will create a license file for all of the production node modules used in your project.
+### Testing
 
-Your action is now published! :rocket:
+```bash
+# Run all tests
+pnpm test
 
-## Validate
+# Type checking
+pnpm run check-types
 
-You can now validate the action by referencing `./` in a workflow in your repo (see [ci.yaml](.github/workflows/ci.yaml)).
+# Linting
+pnpm run lint
 
-```yaml
-uses: ./
-with:
-  milliseconds: 1000
+# Auto-fix linting issues
+pnpm run fix
 ```
 
-See the [actions tab](https://github.com/bfra-me/github-action/actions) for runs of this action! :rocket:
+### Local Testing
 
-## Usage
+Test your action locally by setting environment variables and running the built code:
 
-You can use this action in your workflows like this:
+```bash
+# Build the action
+pnpm run build
+
+# Set input environment variables
+export INPUT_MILLISECONDS=1000
+
+# Run the action
+node dist/index.js
+```
+
+## Example Usage
+
+Once published, your action can be used in workflows like this:
 
 ```yaml
-name: CI
+name: Example Workflow
 on: [push, pull_request]
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Run my action
-        uses: bfra-me/github-action@v2
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Custom Action
+        uses: your-username/your-action@v1
         with:
-          milliseconds: 1000
+          milliseconds: 2000
+```
+
+## Publishing Your Action
+
+### 1. Update Package Metadata
+
+Update `package.json` with your action's information:
+
+```json
+{
+  "name": "your-action-name",
+  "description": "Your action description",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/your-action.git"
+  }
+}
+```
+
+### 2. Build and Commit Distribution
+
+```bash
+# Build for production
+pnpm run build-release
+
+# Commit the dist folder
+git add dist/
+git commit -m "Add distribution files"
+git push
+```
+
+### 3. Create a Release
+
+```bash
+# Tag your release
+git tag -a v1.0.0 -m "Initial release"
+git push origin v1.0.0
+
+# Create major version tag for easier referencing
+git tag -a v1 -m "Version 1"
+git push origin v1
+```
+
+> [!TIP] Users can reference your action using `@v1` for the latest v1.x.x release, or `@v1.0.0` for a specific version.
+
+## Project Structure
+
+```text
+├── src/
+│   ├── main.ts          # Main action entry point
+│   └── wait.ts          # Example utility function
+├── __tests__/
+│   └── main.test.ts     # Test files
+├── dist/               # Built distribution files (auto-generated)
+├── action.yaml         # Action metadata
+├── package.json        # Node.js dependencies and scripts
+├── tsconfig.json       # TypeScript configuration
+├── tsup.config.ts      # Build configuration
+└── eslint.config.ts    # ESLint configuration
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/my-feature`
+3. Make your changes and add tests
+4. Run the test suite: `pnpm test`
+5. Commit your changes: `git commit -m "Add my feature"`
+6. Push to the branch: `git push origin feature/my-feature`
+7. Submit a pull request
+
+## Example Action (Included)
+
+This template includes a simple example action that waits for a specified number of milliseconds. This demonstrates:
+
+- Input handling with `@actions/core`
+- Async operations
+- Output setting
+- Error handling
+- TypeScript best practices
+
+You can test it immediately:
+
+```yaml
+- name: Wait Example
+  uses: ./
+  with:
+    milliseconds: 1000
 ```
