@@ -6,7 +6,7 @@ on:
   pull_request:
     types: [opened, synchronize, ready_for_review, reopened]
   push:
-    branches: [main, 'renovate/**']
+    branches: [main]
   workflow_dispatch:
 
 concurrency:
