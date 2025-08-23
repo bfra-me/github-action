@@ -20,9 +20,9 @@
     "bootstrap": "pnpm install --prefer-offline --loglevel warn",
     "build": "tsup",
     "build-release": "tsup --minify",
-    "check-types": "tsc",
-    "fix": "pnpm run lint --fix",
-    "lint": "eslint .",
+    "check-types": "tsc --noEmit",
+    "fix": "eslint --fix",
+    "lint": "eslint",
     "test": "vitest run"
   },
   "prettier": "@bfra.me/prettier-config/120-proof",

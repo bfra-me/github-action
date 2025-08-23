@@ -8,7 +8,7 @@ on:
   pull_request:
     types: [edited]
   push:
-    branches-ignore: [main]
+    branches-ignore: [main, v*]
   workflow_dispatch:
     inputs:
       log-level:
@@ -22,7 +22,7 @@ on:
         type: boolean
         default: false
   workflow_run:
-    workflows: [Main]
+    workflows: [CI]
     branches: [main]
     types: [completed]
 
