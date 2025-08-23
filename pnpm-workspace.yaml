@@ -4,6 +4,7 @@ ignoreWorkspaceRootCheck: true
 
 onlyBuiltDependencies:
   - '@swc/core'
+  - simple-git-hooks
 
 overrides:
   jiti: <2.2.0
