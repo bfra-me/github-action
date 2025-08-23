@@ -1,0 +1,17 @@
+autoInstallPeers: true
+
+ignoreWorkspaceRootCheck: true
+
+onlyBuiltDependencies:
+  - '@swc/core'
+
+overrides:
+  jiti: <2.2.0
+
+savePrefix: ''
+
+shamefullyHoist: true
+
+shellEmulator: true
+
+strictPeerDependencies: true
