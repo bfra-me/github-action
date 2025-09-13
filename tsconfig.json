@@ -1,11 +1,11 @@
 {
   "extends": "@bfra.me/tsconfig",
   "compilerOptions": {
+    "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "noEmit": true,
-    "target": "ESNext"
+    "noEmit": true
   },
-  "exclude": ["dist", "node_modules"],
-  "include": ["**/*.ts", "tsup.config.ts"]
+  "include": ["**/*.ts", "tsup.config.ts"],
+  "exclude": ["dist", "node_modules"]
 }
