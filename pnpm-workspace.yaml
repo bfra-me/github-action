@@ -3,8 +3,9 @@ autoInstallPeers: true
 ignoreWorkspaceRootCheck: true
 
 onlyBuiltDependencies:
-  - '@swc/core'
+  - esbuild
   - simple-git-hooks
+  - unrs-resolver
 
 overrides:
   jiti: <2.2.0
