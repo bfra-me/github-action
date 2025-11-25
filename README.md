@@ -183,9 +183,13 @@ git tag -a v1 -m "Version 1"
 git push origin v1
 ```
 
+<!-- eslint-disable markdown/no-missing-label-refs -->
+
 > [!TIP]
 >
 > Users can reference your action using `@v1` for the latest v1.x.x release, or `@v1.0.0` for a specific version.
+
+<!-- eslint-enable markdown/no-missing-label-refs -->
 
 ## Project Structure
 
