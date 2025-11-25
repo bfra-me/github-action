@@ -49,7 +49,7 @@ await run() // Top-level await required
 ### Package Manager
 - **Always use pnpm** - this org uses pnpm workspaces and specific configs
 - `pnpm bootstrap` installs with offline preference and quiet logging
-- Pre-commit hooks run `nano-staged` for formatting
+- Pre-commit hooks run `lint-staged` for formatting
 
 ### ESLint Configuration
 - Uses `@bfra.me/eslint-config` with Vitest plugin enabled
