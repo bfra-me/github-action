@@ -43,7 +43,7 @@
     "@bfra.me/prettier-config": "0.16.8",
     "@bfra.me/tsconfig": "0.13.0",
     "@semantic-release/git": "10.0.1",
-    "@types/node": "24.10.14",
+    "@types/node": "24.12.2",
     "@vitest/eslint-plugin": "1.6.16",
     "conventional-changelog-conventionalcommits": "9.3.1",
     "esbuild-plugin-license": "1.2.3",
