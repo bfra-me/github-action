@@ -7,6 +7,10 @@ onlyBuiltDependencies:
   - simple-git-hooks
   - unrs-resolver
 
+overrides:
+  esbuild@>=0.17.0 <0.28.1: '>=0.28.1'
+  fast-uri: '>=3.1.2'
+
 savePrefix: ''
 
 shamefullyHoist: true
