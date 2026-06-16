@@ -7,6 +7,9 @@ onlyBuiltDependencies:
   - simple-git-hooks
   - unrs-resolver
 
+overrides:
+  vite: 8.0.16
+
 savePrefix: ''
 
 shamefullyHoist: true
