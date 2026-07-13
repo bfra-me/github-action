@@ -1,6 +1,6 @@
 {
   "name": "github-action",
-  "version": "2.12.26",
+  "version": "2.12.27",
   "private": true,
   "description": "GitHub Action template repository for bfra.me.",
   "keywords": [
