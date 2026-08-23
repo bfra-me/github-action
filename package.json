@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@bfra.me/eslint-config": "0.51.2",
-    "@bfra.me/prettier-config": "0.16.10",
+    "@bfra.me/prettier-config": "0.16.11",
     "@bfra.me/tsconfig": "0.13.1",
     "@semantic-release/git": "10.0.1",
     "@types/node": "24.13.3",
