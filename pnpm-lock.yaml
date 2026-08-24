@@ -13,8 +13,8 @@ importers:
         version: 3.0.1
     devDependencies:
       '@bfra.me/eslint-config':
-        specifier: 0.51.3
-        version: 0.51.3(3e59f87f490b607a27ea26ac4dbf8e41)
+        specifier: 0.51.4
+        version: 0.51.4(3e59f87f490b607a27ea26ac4dbf8e41)
       '@bfra.me/prettier-config':
         specifier: 0.16.11
         version: 0.16.11(prettier@3.9.6)
@@ -109,10 +109,10 @@ packages:
       chokidar:
         optional: true
 
-  '@bfra.me/eslint-config@0.51.3':
-    resolution: {integrity: sha512-clevDvuYibyKakPFc0uGQ+qitdRIOW0mzr2rJG6Ylc4oA2uRhX9uCmukBuJUo2bxMooQ3Se3avZiEZwbCWNYqw==}
+  '@bfra.me/eslint-config@0.51.4':
+    resolution: {integrity: sha512-O3jSc8qi3I19wYmbFDQnM0IF154wCZqkbJu/6KSdWa4ImlKBPLnrUyD/t2cFTZeHqvB7WePoBZpFZHNGNs3zSg==}
     peerDependencies:
-      '@eslint-react/eslint-plugin': ^4.2.3
+      '@eslint-react/eslint-plugin': ^4.2.3 || ^5.0.0
       '@next/eslint-plugin-next': '>=15.5.3'
       '@vitest/eslint-plugin': ^1.1.21
       astro-eslint-parser: ^1.2.2
@@ -3506,7 +3506,7 @@ snapshots:
     dependencies:
       is-in-ci: 2.0.0
 
-  '@bfra.me/eslint-config@0.51.3(3e59f87f490b607a27ea26ac4dbf8e41)':
+  '@bfra.me/eslint-config@0.51.4(3e59f87f490b607a27ea26ac4dbf8e41)':
     dependencies:
       '@bfra.me/es': 0.1.0
       '@eslint-community/eslint-plugin-eslint-comments': 4.7.2(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))
