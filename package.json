@@ -54,7 +54,7 @@
     "jiti": "2.7.0",
     "js-yaml": "4.3.2",
     "lint-staged": "16.4.0",
-    "prettier": "3.9.8",
+    "prettier": "3.9.9",
     "semantic-release": "25.0.9",
     "simple-git-hooks": "2.14.0",
     "tsup": "8.5.1",
